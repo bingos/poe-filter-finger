@@ -10,4 +10,5 @@ build_requires 'Test::More' => 0.47;
 build_requires 'Test::Deep' => 0.103;
 requires 'POE' => 0.38;
 requires 'POE::Filter' => 0;
+auto_set_repository;
 WriteAll();

@@ -1,5 +1,9 @@
 POE::Filter::Finger
 ===================
 
+0.04	Mon Apr  6 09:45:01 BST 2009
+	- Added username_regex and hostname_regex parameters to new().
+	  Requested by Dan Moore.
+
 0.02	Thu Oct 23 12:42:07 BST 2008
 	- Initial CPAN release

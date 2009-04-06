@@ -5,7 +5,7 @@ use warnings;
 use vars qw($VERSION);
 use base qw(POE::Filter);
 
-$VERSION = '0.02';
+$VERSION = '0.04';
 
 #  {Q1}    ::= [{W}|{W}{S}{U}]{C}
 #  {Q2}    ::= [{W}{S}][{U}]{H}{C}
@@ -40,17 +40,19 @@ sub get_one {
 
   my $original = $query;
   my $verbose = $query =~ s{\A/W\s*}{};
+  my $user_regex = $self->{username_regex} || $u_regex;
+  my $host_regex = $self->{hostname_regex} || $h_regex;
 
   SWITCH: {
     if ($query eq '') {
       push @$events, { listing => { verbose => $verbose } };
       last SWITCH;
     } 
-    if ($query =~ /\A$u_regex\z/) {
+    if ($query =~ /\A$user_regex\z/) {
       push @$events, { user => { username => $query, verbose => $verbose } };
       last SWITCH;
     } 
-    if ($query =~ /\A($u_regex)?((?:\@$h_regex)+)\z/) {
+    if ($query =~ /\A($user_regex)?((?:\@$host_regex)+)\z/) {
       my ($username, $host_string) = ($1, $2);
       my @hosts = split /@/, $host_string;
       shift @hosts;
@@ -181,6 +183,11 @@ It is based on code borrowed from L<Net::Finger::Server>.
 =item C<new>
 
 Creates a new POE::Filter::Finger object.
+
+Takes two optional parameters:
+
+  'username_regex', override the regex used to match usernames in query string;
+  'hostname_regex', override the regex used to match hostnames in query string;
 
 =back
 
