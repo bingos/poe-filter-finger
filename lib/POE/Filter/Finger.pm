@@ -5,7 +5,7 @@ use warnings;
 use vars qw($VERSION);
 use base qw(POE::Filter);
 
-$VERSION = '0.04';
+$VERSION = '0.06';
 
 #  {Q1}    ::= [{W}|{W}{S}{U}]{C}
 #  {Q2}    ::= [{W}{S}][{U}]{H}{C}
