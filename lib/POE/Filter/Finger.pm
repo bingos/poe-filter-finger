@@ -5,7 +5,7 @@ use warnings;
 use vars qw($VERSION);
 use base qw(POE::Filter);
 
-$VERSION = '0.06';
+$VERSION = '0.08';
 
 #  {Q1}    ::= [{W}|{W}{S}{U}]{C}
 #  {Q2}    ::= [{W}{S}][{U}]{H}{C}
@@ -261,7 +261,7 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 LICENSE
 
-Copyright C<(c)> Chris Williams and Ricardo SIGNES
+Copyright E<copy> Chris Williams and Ricardo SIGNES
 
 This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
 

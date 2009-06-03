@@ -18,11 +18,11 @@ SYNOPSIS
             )],
          ],
        );
-       
-   $poe_kernel->run();
+   
+       $poe_kernel->run();
        exit 0;
-       
-   sub _start {
+   
+       sub _start {
          my $heap = $_[HEAP];
          # Spawn the Test::POE::Server::TCP server.
          $heap->{testd} = Test::POE::Server::TCP->spawn(
@@ -38,8 +38,8 @@ SYNOPSIS
          warn "Listening on port: ", $heap->{testd}->port(), "\n";
          return;
        }
-       
-   sub testd_client_input {
+   
+       sub testd_client_input {
          my ($kernel,$heap,$sender,$id,$input) = @_[KERNEL,HEAP,SENDER,ARG0,ARG1];
 
          my $output;
@@ -85,6 +85,11 @@ DESCRIPTION
 CONSTRUCTOR
     "new"
         Creates a new POE::Filter::Finger object.
+
+        Takes two optional parameters:
+
+          'username_regex', override the regex used to match usernames in query string;
+          'hostname_regex', override the regex used to match hostnames in query string;
 
 METHODS
     "get"
@@ -143,7 +148,7 @@ AUTHOR
     Ricardo SIGNES <rjbs@cpan.org>
 
 LICENSE
-    Copyright "(c)" Chris Williams and Ricardo SIGNES
+    Copyright © Chris Williams and Ricardo SIGNES
 
     This module may be used, modified, and distributed under the same terms
     as Perl itself. Please see the license that came with your Perl
