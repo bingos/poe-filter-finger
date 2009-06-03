@@ -20,7 +20,7 @@ my $h_regex = qr{[-_a-z0-9.]+}i;
 
 sub new {
   my $class = shift;
-  my $self = {};
+  my $self = {@_};
   $self->{BUFFER} = [];
   bless $self, $class;
 }
